@@ -1,0 +1,34 @@
+[package]
+name = "usdf-swap-cli"
+description.workspace = true
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+readme.workspace = true
+keywords.workspace = true
+
+documentation = "https://docs.rs/usdf-swap-cli"
+
+[[bin]]
+name = "usdf-swap"
+path = "src/main.rs"
+
+[dependencies]
+usdf-swap-api.workspace = true
+usdf-swap-client.workspace = true
+
+anyhow.workspace = true
+chrono.workspace = true
+serde_json.workspace = true
+clap.workspace = true
+colored.workspace = true
+dialoguer.workspace = true
+dirs.workspace = true
+tokio.workspace = true
+indicatif.workspace = true
+console.workspace = true
+
+solana-client.workspace = true
+solana-sdk.workspace = true

@@ -1,0 +1,610 @@
+{
+  "accounts": [
+    {
+      "name": "Pool",
+      "discriminator": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "address": "usdfcP2V1bh1Lz7Y87pxR4zJd3wnVtssJ6GeSHFeZeu",
+  "default": {
+    "address": "usdfcP2V1bh1Lz7Y87pxR4zJd3wnVtssJ6GeSHFeZeu",
+    "metadata": {
+      "name": "usdf_swap",
+      "version": "1.0.0",
+      "spec": "0.1.0",
+      "description": "USDF Swap Program"
+    },
+    "instructions": [
+      {
+        "name": "initialize",
+        "discriminator": [
+          1
+        ],
+        "accounts": [
+          {
+            "name": "authority",
+            "writable": true,
+            "signer": true
+          },
+          {
+            "name": "usdf_mint"
+          },
+          {
+            "name": "other_mint"
+          },
+          {
+            "name": "pool",
+            "writable": true
+          },
+          {
+            "name": "usdf_vault",
+            "writable": true
+          },
+          {
+            "name": "other_vault",
+            "writable": true
+          },
+          {
+            "name": "token_program",
+            "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+          },
+          {
+            "name": "system_program",
+            "address": "11111111111111111111111111111111"
+          },
+          {
+            "name": "rent",
+            "address": "SysvarRent111111111111111111111111111111111"
+          }
+        ],
+        "args": [
+          {
+            "name": "_data",
+            "type": {
+              "defined": {
+                "name": "InitializeArgs"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "swap",
+        "discriminator": [
+          2
+        ],
+        "accounts": [
+          {
+            "name": "user",
+            "writable": true,
+            "signer": true
+          },
+          {
+            "name": "pool"
+          },
+          {
+            "name": "usdf_vault",
+            "writable": true
+          },
+          {
+            "name": "other_vault",
+            "writable": true
+          },
+          {
+            "name": "user_usdf_token",
+            "writable": true
+          },
+          {
+            "name": "user_other_token",
+            "writable": true
+          },
+          {
+            "name": "token_program",
+            "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+          }
+        ],
+        "args": [
+          {
+            "name": "_data",
+            "type": {
+              "defined": {
+                "name": "SwapArgs"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "name": "transfer",
+        "discriminator": [
+          3
+        ],
+        "accounts": [
+          {
+            "name": "authority",
+            "writable": true,
+            "signer": true
+          },
+          {
+            "name": "pool"
+          },
+          {
+            "name": "vault",
+            "writable": true
+          },
+          {
+            "name": "destination",
+            "writable": true
+          },
+          {
+            "name": "token_program",
+            "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+          }
+        ],
+        "args": [
+          {
+            "name": "_data",
+            "type": {
+              "defined": {
+                "name": "TransferArgs"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "accounts": [
+      {
+        "name": "Pool",
+        "discriminator": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "types": [
+      {
+        "name": "InitializeArgs",
+        "repr": {
+          "kind": "c"
+        },
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "name",
+              "type": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            },
+            {
+              "name": "usdf_vault_bump",
+              "type": "u8"
+            },
+            {
+              "name": "other_vault_bump",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      {
+        "name": "Pool",
+        "repr": {
+          "kind": "c",
+          "align": 8
+        },
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "authority",
+              "type": "pubkey"
+            },
+            {
+              "name": "name",
+              "type": {
+                "array": [
+                  "u8",
+                  32
+                ]
+              }
+            },
+            {
+              "name": "usdf_mint",
+              "type": "pubkey"
+            },
+            {
+              "name": "other_mint",
+              "type": "pubkey"
+            },
+            {
+              "name": "usdf_vault",
+              "type": "pubkey"
+            },
+            {
+              "name": "other_vault",
+              "type": "pubkey"
+            },
+            {
+              "name": "bump",
+              "type": "u8"
+            },
+            {
+              "name": "usdf_vault_bump",
+              "type": "u8"
+            },
+            {
+              "name": "other_vault_bump",
+              "type": "u8"
+            },
+            {
+              "name": "usdf_decimals",
+              "type": "u8"
+            },
+            {
+              "name": "other_decimals",
+              "type": "u8"
+            },
+            {
+              "name": "_padding",
+              "type": {
+                "array": [
+                  "u8",
+                  3
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "SwapArgs",
+        "repr": {
+          "kind": "c"
+        },
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "amount",
+              "type": "u64"
+            },
+            {
+              "name": "usdf_to_other",
+              "type": "u8"
+            }
+          ]
+        }
+      },
+      {
+        "name": "TransferArgs",
+        "repr": {
+          "kind": "c"
+        },
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "amount",
+              "type": "u64"
+            },
+            {
+              "name": "is_usdf",
+              "type": "u8"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "instructions": [
+    {
+      "name": "initialize",
+      "discriminator": [
+        1
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "usdf_mint"
+        },
+        {
+          "name": "other_mint"
+        },
+        {
+          "name": "pool",
+          "writable": true
+        },
+        {
+          "name": "usdf_vault",
+          "writable": true
+        },
+        {
+          "name": "other_vault",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "rent",
+          "address": "SysvarRent111111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "_data",
+          "type": {
+            "defined": {
+              "name": "InitializeArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "swap",
+      "discriminator": [
+        2
+      ],
+      "accounts": [
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "pool"
+        },
+        {
+          "name": "usdf_vault",
+          "writable": true
+        },
+        {
+          "name": "other_vault",
+          "writable": true
+        },
+        {
+          "name": "user_usdf_token",
+          "writable": true
+        },
+        {
+          "name": "user_other_token",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "_data",
+          "type": {
+            "defined": {
+              "name": "SwapArgs"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "transfer",
+      "discriminator": [
+        3
+      ],
+      "accounts": [
+        {
+          "name": "authority",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "pool"
+        },
+        {
+          "name": "vault",
+          "writable": true
+        },
+        {
+          "name": "destination",
+          "writable": true
+        },
+        {
+          "name": "token_program",
+          "address": "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
+        }
+      ],
+      "args": [
+        {
+          "name": "_data",
+          "type": {
+            "defined": {
+              "name": "TransferArgs"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "name": "usdf_swap",
+    "version": "1.0.0",
+    "spec": "0.1.0",
+    "description": "USDF Swap Program"
+  },
+  "types": [
+    {
+      "name": "InitializeArgs",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "name",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "usdf_vault_bump",
+            "type": "u8"
+          },
+          {
+            "name": "other_vault_bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Pool",
+      "repr": {
+        "kind": "c",
+        "align": 8
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "pubkey"
+          },
+          {
+            "name": "name",
+            "type": {
+              "array": [
+                "u8",
+                32
+              ]
+            }
+          },
+          {
+            "name": "usdf_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "other_mint",
+            "type": "pubkey"
+          },
+          {
+            "name": "usdf_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "other_vault",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "usdf_vault_bump",
+            "type": "u8"
+          },
+          {
+            "name": "other_vault_bump",
+            "type": "u8"
+          },
+          {
+            "name": "usdf_decimals",
+            "type": "u8"
+          },
+          {
+            "name": "other_decimals",
+            "type": "u8"
+          },
+          {
+            "name": "_padding",
+            "type": {
+              "array": [
+                "u8",
+                3
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "SwapArgs",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "usdf_to_other",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TransferArgs",
+      "repr": {
+        "kind": "c"
+      },
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "is_usdf",
+            "type": "u8"
+          }
+        ]
+      }
+    }
+  ]
+}

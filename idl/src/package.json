@@ -1,0 +1,12 @@
+{
+  "name": "usdf-swap-idl",
+  "version": "1.0.0",
+  "description": "USDF Swap Program IDL generation",
+  "scripts": {
+    "update-discriminators": "bun ./scripts/update-discriminators.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

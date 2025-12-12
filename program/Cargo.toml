@@ -1,0 +1,40 @@
+[package]
+name = "usdf-swap-program"
+description.workspace = true
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+homepage.workspace = true
+repository.workspace = true
+readme.workspace = true
+keywords.workspace = true
+
+documentation = "https://docs.rs/usdf-swap-program"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "usdf_swap"
+
+[features]
+default = []
+
+[dependencies]
+usdf-swap-api.workspace = true
+solana-program.workspace = true
+steel.workspace = true
+spl-token.workspace = true
+spl-token-2022.workspace = true
+spl-associated-token-account.workspace = true
+bytemuck.workspace = true
+solana-security-txt.workspace = true
+
+# Fix for issues with `build-sbf` rustc being on `1.79-dev`
+bytemuck_derive=">=1.8.1, <1.9.0"
+half = "=2.4.1"
+
+[dev-dependencies]
+litesvm = "0.5.0"
+litesvm-token = "0.5.0"
+solana-sdk = "2.1.0"
+pretty-hex = "0.4.1"
+rand = "0.8.5"
